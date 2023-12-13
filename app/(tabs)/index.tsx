@@ -1,31 +1,37 @@
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View } from '../../components/Themed';
+import { StyleSheet, View, Text } from "react-native";
+import LottieView from 'lottie-react-native';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <LottieView
+        autoPlay
+        style={{
+          height: 250,
+        }}
+        source={require('../../assets/animation.json')}
+      />
+      <Text style={styles.intro}>
+        Ini merupakan sebuah aplikasi yang berisi mengenai hooks yang ada pada
+        react native berbasis Functional Component
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    padding: 10,
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 20
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  intro: {
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+    lineHeight: 25
   },
 });
