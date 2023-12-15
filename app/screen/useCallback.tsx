@@ -1,7 +1,8 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import Search from '../../components/Search';
 import { Pressable, Text, View } from 'react-native';
 import { shuffle } from '@pacote/shuffle'
+import { contextCustom } from '../../context/Context';
 
 const allUsers = [
     'john',
@@ -14,6 +15,9 @@ const allUsers = [
 interface DemoProps { }
 
 export default function Demo({ }: DemoProps) {
+    // implementation context
+    const context = contextCustom();
+
     const [users, setUsers] = useState(allUsers);
     const [serachValue, setSearchValue] = useState("");
 
@@ -27,8 +31,12 @@ export default function Demo({ }: DemoProps) {
             );
             setUsers(filteredUsers);
         },
-        []
+        [users]
     );
+
+    useEffect(() => {
+        console.log(context.name)
+    }, [])
 
     return (
         <View className='p-5 flex-1'>

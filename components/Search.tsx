@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { TextInput, View } from 'react-native';
 
 interface SearchProps {
